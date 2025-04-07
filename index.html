@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mood of the Day</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .fade {
+      transition: all 0.5s ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-slate-800 to-slate-900 min-h-screen flex flex-col items-center justify-center text-white font-sans">
+  <h1 class="text-4xl font-bold mb-8 tracking-wide">💫 Mood of the Day</h1>
+
+  <div id="moodBox" class="fade p-10 rounded-2xl text-center text-5xl font-semibold bg-indigo-500 shadow-2xl w-64">
+    😊 Happy
+  </div>
+
+  <button onclick="getMood()"
+    class="mt-6 bg-purple-600 hover:bg-purple-800 transition px-6 py-2 rounded-full text-lg shadow-lg">
+    Get a New Mood
+  </button>
+
+  <script>
+    const moods = [
+      { mood: "😊 Happy", bg: "bg-yellow-400" },
+      { mood: "😢 Sad", bg: "bg-blue-600" },
+      { mood: "😎 Cool", bg: "bg-green-500" },
+      { mood: "😡 Angry", bg: "bg-red-600" },
+      { mood: "😴 Sleepy", bg: "bg-gray-700" },
+      { mood: "🤪 Goofy", bg: "bg-pink-500" },
+      { mood: "😇 Peaceful", bg: "bg-emerald-500" }
+    ];
+
+    function getMood() {
+      const moodBox = document.getElementById("moodBox");
+      const randomMood = moods[Math.floor(Math.random() * moods.length)];
+
+      // Remove previous bg class
+      moodBox.className = "fade p-10 rounded-2xl text-center text-5xl font-semibold shadow-2xl w-64";
+      moodBox.classList.add(randomMood.bg);
+      moodBox.textContent = randomMood.mood;
+    }
+  </script>
+</body>
+</html>
+
